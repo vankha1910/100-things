@@ -20,10 +20,11 @@ const AllThings = () => {
 
   return (
     <>
+      <AddThing />
+
       {things?.map((thing: ThingInterface) => (
         <Thing key={thing.id} thing={thing} />
       ))}
-      <AddThing />
       <Button
         onClick={() => navigate('/edit-profile')}
         className='fixed bottom-4 left-4 h-10 min-w-[140px]'

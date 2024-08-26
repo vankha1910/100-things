@@ -34,7 +34,7 @@ const emptyState: ThingState = {
 
 const reducers = {
   addThing: (state: ThingState, action: { payload: Thing }) => {
-    state.things.push(action.payload)
+    state.things.unshift(action.payload)
   },
   deleteThing: (state: ThingState, action: { payload: string }) => {
     state.things = state.things.filter((thing) => thing.id !== action.payload)
@@ -48,11 +48,20 @@ const reducers = {
       timestamp: new Date(),
       note: ''
     })
+
+    if (thing?.completions.length === 100) {
+      thing.isFinished = true
+      thing.finishedDate = new Date()
+    }
   },
   undoCompleteThing: (state: ThingState, action: { payload: string }) => {
     const thing = state.things.find((t) => t.id === action.payload)
     if (!thing) return
     thing?.completions.pop()
+    if (thing.isFinished) {
+      thing.isFinished = false
+      thing.finishedDate = undefined
+    }
   },
   viewDetail: (state: ThingState, action: { payload: string }) => {
     state.currentThingId = action.payload
@@ -65,6 +74,9 @@ const reducers = {
     const thing = state.things.find((t) => t.id === id)
     if (!thing) return
     thing.completions[noteIndex].note = note
+  },
+  removeThing: (state: ThingState, action: { payload: string }) => {
+    state.things = state.things.filter((thing) => thing.id !== action.payload)
   }
 }
 
@@ -84,7 +96,8 @@ export const {
   completeThing,
   undoCompleteThing,
   viewDetail,
-  updateThingNote
+  updateThingNote,
+  removeThing
 } = thingSlice.actions
 
 export default thingSlice.reducer

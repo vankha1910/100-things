@@ -3,7 +3,8 @@ import {
   completeThing,
   undoCompleteThing,
   updateThingNote,
-  viewDetail
+  viewDetail,
+  removeThing
 } from './thingSlice'
 
 const useThing = () => {
@@ -16,6 +17,9 @@ const useThing = () => {
     },
     updateThingNote: (id: string, noteIndex: number, note: string) => {
       dispatch(updateThingNote({ id, noteIndex, note }))
+    },
+    removeThing: (id: string) => {
+      dispatch(removeThing(id))
     }
   }
 }

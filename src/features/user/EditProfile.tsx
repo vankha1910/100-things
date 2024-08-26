@@ -28,14 +28,14 @@ const EditProfile = () => {
           <p className='mb-3 text-2xl'>Edit your profile</p>
           <div className='flex items-center justify-center gap-4'>
             <input
-              className='w-52 rounded-lg border-2 border-solid border-black p-2'
+              className='w-52 rounded-lg border-2 border-solid border-black bg-transparent p-2 text-inherit outline-none dark:border-[#cbd5e1]'
               type='text'
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
             />
             <input
-              className='h-10 rounded-lg border-2 border-solid border-black'
+              className='h-10 rounded-lg border-2 border-solid border-black dark:border-[#cbd5e1]'
               type='color'
               value={color}
               onChange={(e) => setColor(e.target.value)}

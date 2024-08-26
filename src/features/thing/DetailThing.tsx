@@ -30,16 +30,21 @@ const DetailThing = () => {
 }
 
 const Header = ({ currentThing }: { currentThing: ThingInterface }) => {
-  const { completeThing, undoCompleteThing, viewDetail } = useThing()
+  const { completeThing, undoCompleteThing, viewDetail, removeThing } =
+    useThing()
 
   const handleBack = () => {
+    viewDetail('')
+  }
+  const handleRemove = () => {
+    removeThing(currentThing.id)
     viewDetail('')
   }
   return (
     <header className='flex flex-col gap-8'>
       <div className='flex justify-between'>
         <Button onClick={handleBack}> ⬅ back </Button>
-        <Button> 🗑 Remove </Button>
+        <Button onClick={handleRemove}> 🗑 Remove </Button>
       </div>
       <div className='flex justify-between'>
         <Button onClick={() => completeThing(currentThing.id)}>➕ Do</Button>
