@@ -4,7 +4,7 @@ import Cell from '../../components/Cell'
 import { RootState } from '../../app/store'
 import { Thing as ThingInterface } from './thingSlice'
 import useThing from './useThing'
-const A100 = Array.from(Array(100)).map((k, v) => v)
+const A100 = Array.from(Array(100)).map((_, v) => v)
 
 const DetailThing = () => {
   const things = useSelector((state: RootState) => state.thing.things)

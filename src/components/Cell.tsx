@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { completeThing, Thing } from '../features/thing/thingSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import useClickOutside from '../hooks/useClickOutside'

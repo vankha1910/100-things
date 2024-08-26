@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import AllThings from '../features/thing/AllThings'
 import { useSelector } from 'react-redux'
 import { RootState } from '../app/store'

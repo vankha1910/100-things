@@ -1,4 +1,3 @@
-import React from 'react'
 import Thing from './Thing.tsx'
 import { Thing as ThingInterface } from './thingSlice'
 import { useSelector } from 'react-redux'
