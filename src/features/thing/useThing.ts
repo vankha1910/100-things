@@ -4,7 +4,8 @@ import {
   undoCompleteThing,
   updateThingNote,
   viewDetail,
-  removeThing
+  removeThing,
+  stopAnimation
 } from './thingSlice'
 
 const useThing = () => {
@@ -20,7 +21,8 @@ const useThing = () => {
     },
     removeThing: (id: string) => {
       dispatch(removeThing(id))
-    }
+    },
+    stopAnimation: () => dispatch(stopAnimation())
   }
 }
 

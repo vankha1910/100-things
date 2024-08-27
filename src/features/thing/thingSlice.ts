@@ -20,16 +20,19 @@ export interface Thing {
 interface ThingState {
   things: Thing[]
   currentThingId?: string
+  showAnimation: boolean
 }
 
 const initialState: ThingState = {
   things: JSON.parse(localStorage.getItem(KEY_THINGS) || '[]'),
-  currentThingId: ''
+  currentThingId: '',
+  showAnimation: false
 }
 
 const emptyState: ThingState = {
   things: [],
-  currentThingId: ''
+  currentThingId: '',
+  showAnimation: false
 }
 
 const reducers = {
@@ -52,6 +55,7 @@ const reducers = {
     if (thing?.completions.length === 100) {
       thing.isFinished = true
       thing.finishedDate = new Date()
+      state.showAnimation = true
     }
   },
   undoCompleteThing: (state: ThingState, action: { payload: string }) => {
@@ -77,6 +81,9 @@ const reducers = {
   },
   removeThing: (state: ThingState, action: { payload: string }) => {
     state.things = state.things.filter((thing) => thing.id !== action.payload)
+  },
+  stopAnimation: (state: ThingState) => {
+    state.showAnimation = false
   }
 }
 
@@ -97,7 +104,8 @@ export const {
   undoCompleteThing,
   viewDetail,
   updateThingNote,
-  removeThing
+  removeThing,
+  stopAnimation
 } = thingSlice.actions
 
 export default thingSlice.reducer

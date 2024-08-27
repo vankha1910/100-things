@@ -39,10 +39,10 @@ const Cell = ({ currentThing, index }: CellProps) => {
           ref={ref}
           className='absolute left-[20px] top-[20px] z-[99] h-auto min-w-[150px] rounded border-2 border-solid border-black bg-white p-2'
         >
-          <span>{timeComplete}</span>
+          <span className='dark:text-zinc-800'>{timeComplete}</span>
           <textarea
             placeholder='type to add text to this note '
-            className='mt-1 resize border-none outline-none'
+            className='mt-1 resize border-none outline-none dark:text-zinc-800'
             value={currentThing.completions[index]?.note}
             onChange={(e) => {
               updateThingNote(currentThing.id, index, e.target.value)

@@ -16,7 +16,7 @@ const DetailThing = () => {
   return (
     <div className='mx-auto mb-8 w-full'>
       <Header currentThing={currentThing}></Header>
-      <h3 className='mb-8 text-center text-xl font-medium'>
+      <h3 className='mb-8 mt-4 text-center text-xl font-medium'>
         {currentThing.name}{' '}
         <span className='font-normal'>{`(${currentThing.completions.length}/100 )`}</span>
       </h3>
@@ -47,8 +47,16 @@ const Header = ({ currentThing }: { currentThing: ThingInterface }) => {
         <Button onClick={handleRemove}> 🗑 Remove </Button>
       </div>
       <div className='flex justify-between'>
-        <Button onClick={() => completeThing(currentThing.id)}>➕ Do</Button>
-        <Button onClick={() => undoCompleteThing(currentThing.id)}>
+        <Button
+          disabled={currentThing.completions.length === 100}
+          onClick={() => completeThing(currentThing.id)}
+        >
+          ➕ Do
+        </Button>
+        <Button
+          disabled={currentThing.completions.length === 0}
+          onClick={() => undoCompleteThing(currentThing.id)}
+        >
           ➖ Undo
         </Button>
       </div>

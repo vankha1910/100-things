@@ -4,15 +4,9 @@ import { Thing as ThingInterface } from './thingSlice'
 import useThing from './useThing'
 import { RootState } from '../../app/store'
 import { formatDate } from '../../utils'
-import { useEffect, useRef, useState } from 'react'
-import ReactConfetti from 'react-confetti'
-import audio from '../../assets/audio/applause.mp3'
 const Thing = ({ thing }: { thing: ThingInterface }) => {
   const { completeThing, undoCompleteThing, viewDetail } = useThing()
   const { color } = useSelector((state: RootState) => state.user)
-  const [showAnimation, setShowAnimation] = useState(false)
-  const audioRef = useRef<HTMLAudioElement>(null)
-  const isFirstRender = useRef(true)
   const handleComplete = () => {
     completeThing(thing.id)
   }
@@ -23,20 +17,6 @@ const Thing = ({ thing }: { thing: ThingInterface }) => {
     viewDetail(thing.id)
   }
 
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false
-      return
-    }
-    if (thing.isFinished) {
-      setShowAnimation(true)
-      audioRef?.current?.play()
-    }
-
-    setTimeout(() => {
-      setShowAnimation(false)
-    }, 5000)
-  }, [thing])
   return (
     <>
       <section className='flex w-full flex-col items-center justify-center rounded border-2 border-solid border-black p-8 shadow-[-4px_4px_0_black] dark:border-[#cbd5e1] dark:shadow-[-4px_4px_0_#cbd5e1]'>
@@ -92,12 +72,8 @@ const Thing = ({ thing }: { thing: ThingInterface }) => {
           </p>
         </div>
       </section>
-      <ReactConfetti
-        width={window.innerWidth}
-        height={window.innerHeight}
-        recycle={showAnimation}
-      ></ReactConfetti>
-      <audio ref={audioRef} src={audio}></audio>
+      {/* <ReactConfetti recycle={showAnimation}></ReactConfetti>
+      <audio ref={audioRef} src={audio}></audio> */}
     </>
   )
 }
