@@ -29,7 +29,7 @@ const Cell = ({ currentThing, index }: CellProps) => {
     <div className='relative h-[40px] w-[40px]'>
       <div
         onClick={handleClickCell}
-        className={`h-full rounded border border-solid border-black shadow-[black_-3px_3px_0px]`}
+        className={`custom-cell h-full rounded border border-solid border-black shadow-[black_-3px_3px_0px]`}
         style={{
           background: index < currentThing.completions.length ? color : 'white'
         }}
@@ -47,6 +47,7 @@ const Cell = ({ currentThing, index }: CellProps) => {
             onChange={(e) => {
               updateThingNote(currentThing.id, index, e.target.value)
             }}
+            // style={{ height: 'auto', overflow: 'hidden' }}
           />
         </div>
       )}

@@ -16,7 +16,7 @@ const DetailThing = () => {
   return (
     <div className='mx-auto mb-8 w-full'>
       <Header currentThing={currentThing}></Header>
-      <h3 className='mb-8 mt-4 text-center text-xl font-medium'>
+      <h3 className='mb-8 mt-6 text-center text-xl font-bold'>
         {currentThing.name}{' '}
         <span className='font-normal'>{`(${currentThing.completions.length}/100 )`}</span>
       </h3>
@@ -41,7 +41,7 @@ const Header = ({ currentThing }: { currentThing: ThingInterface }) => {
     viewDetail('')
   }
   return (
-    <header className='flex flex-col gap-8'>
+    <header className='flex flex-col gap-4'>
       <div className='flex justify-between'>
         <Button onClick={handleBack}> ⬅ back </Button>
         <Button onClick={handleRemove}> 🗑 Remove </Button>

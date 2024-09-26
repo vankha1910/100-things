@@ -145,7 +145,7 @@ div {
   box-shadow: calc(-1 * var(--height) * var(--base))
     calc(var(--height) * var(--base)) 0 black;
   position: relative;
-  left: calc(var(--height) * var(--base));
+  // left: calc(var(--height) * var(--base));
   bottom: calc(var(--height) * var(--base));
   transition-property: box-shadow, left, bottom;
   transition-duration: 0.1s;
@@ -162,4 +162,7 @@ div {
   &:focus-visible {
     outline: none;
   }
+}
+.custom-cell {
+  transition: all 0.35s ease;
 }

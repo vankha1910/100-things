@@ -5,8 +5,8 @@
 :root {
   --bg-color: #f7f9fc;
   --text-color: #2e3a59;
-  --switch-width: 150px;
-  --switch-height: 65px;
+  --switch-width: 120px;
+  --switch-height: 40px;
   --switch-round: 50px;
   --switch-padding-x: 5px;
   --switch-bg: linear-gradient(to bottom, #73bbff, #a2d1fd);
@@ -14,7 +14,7 @@
   --border-width: 2px;
   --border-gradient: linear-gradient(to bottom, #a2d1fd, #cde7ff);
   --border-dark-gradient: linear-gradient(to bottom, #000000, #6c7384);
-  --sunmoon-size: 55px;
+  --sunmoon-size: 35px;
   --transition: all 0.5s ease;
 }
 

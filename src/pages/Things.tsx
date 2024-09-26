@@ -12,7 +12,7 @@ const Things = () => {
     if (!username) return navigate('/new')
   }, [])
   return (
-    <div className='mx-auto my-8 flex w-[80%] flex-col items-center justify-center gap-8 font-rale lg:w-[60%]'>
+    <div className='mx-auto my-8 flex w-[80%] flex-col items-center justify-center gap-8 pb-10 font-rale lg:w-[60%]'>
       <div className='flex w-full justify-end'>
         <ToggleTheme></ToggleTheme>
       </div>

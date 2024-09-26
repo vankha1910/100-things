@@ -6,6 +6,9 @@ export default {
     extend: {
       fontFamily: {
         rale: ['Raleway', 'sans-serif']
+      },
+      colors: {
+        primaryGray: '#cbd5e1'
       }
     }
   },

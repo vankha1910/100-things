@@ -6,33 +6,32 @@ import DetailThing from './DetailThing.tsx'
 import AddThing from './AddThing.tsx'
 import Button from '../../components/Button.tsx'
 import { useNavigate } from 'react-router-dom'
-import ReactConfetti from 'react-confetti'
-import { useEffect, useRef } from 'react'
-import useThing from './useThing.ts'
-import audio from '../../assets/audio/applause.mp3'
-import useWindowSize from '../../hooks/useWindownSize.ts'
+// import { useEffect, useRef } from 'react'
+// import useThing from './useThing.ts'
+// import useWindowSize from '../../hooks/useWindownSize.ts'
+// import ReactConfetti from 'react-confetti'
+// import audio from '../../assets/audio/applause.mp3'
 
 const AllThings = () => {
-  const audioRef = useRef<HTMLAudioElement>(null)
-  const windowSize = useWindowSize()
+  // const audioRef = useRef<HTMLAudioElement>(null)
+  // const windowSize = useWindowSize()
   const navigate = useNavigate()
   const things = useSelector((state: RootState) => state.thing.things)
-  const { stopAnimation } = useThing()
-  const showAnimation = useSelector(
-    (state: RootState) => state.thing.showAnimation
-  )
+  // const { stopAnimation } = useThing()
+  // const showAnimation = useSelector(
+  //   (state: RootState) => state.thing.showAnimation
+  // )
   const currentThingId = useSelector(
     (state: RootState) => state.thing.currentThingId
   )
-  console.log(windowSize)
-  useEffect(() => {
-    if (showAnimation) {
-      audioRef?.current?.play()
-      setTimeout(() => {
-        stopAnimation()
-      }, 5000)
-    }
-  }, [showAnimation, stopAnimation])
+  // useEffect(() => {
+  //   if (showAnimation) {
+  //     audioRef?.current?.play()
+  //     setTimeout(() => {
+  //       stopAnimation()
+  //     }, 5000)
+  //   }
+  // }, [showAnimation, stopAnimation])
 
   return (
     <>
@@ -54,11 +53,11 @@ const AllThings = () => {
         </>
       )}
 
-      <ReactConfetti
+      {/* <ReactConfetti
         width={windowSize.width - 20}
         recycle={showAnimation}
       ></ReactConfetti>
-      <audio ref={audioRef} src={audio}></audio>
+      <audio ref={audioRef} src={audio}></audio> */}
     </>
   )
 }
