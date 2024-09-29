@@ -46,7 +46,7 @@ const AllThings = () => {
           ))}
           <Button
             onClick={() => navigate('/edit-profile')}
-            className='fixed bottom-4 left-4 h-10 min-w-[140px]'
+            className='bg-bgColor dark:bg-bgDarkColor fixed bottom-4 left-4 h-10 min-w-[140px]'
           >
             Edit your profile
           </Button>

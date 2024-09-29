@@ -8,7 +8,9 @@ export default {
         rale: ['Raleway', 'sans-serif']
       },
       colors: {
-        primaryGray: '#cbd5e1'
+        primaryGray: '#cbd5e1',
+        bgColor: '#f7f9fc',
+        bgDarkColor: '#535c72'
       }
     }
   },

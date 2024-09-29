@@ -28,7 +28,7 @@ const AddThing = () => {
   if (!isAdding) {
     return (
       <Button
-        className='fixed bottom-4 right-4 w-fit'
+        className='bg-bgColor dark:bg-bgDarkColor fixed bottom-4 right-4 z-10 w-fit'
         onClick={() => setIsAdding(true)}
       >
         Add a thing
@@ -40,14 +40,14 @@ const AddThing = () => {
       <form
         ref={formRef}
         onSubmit={handleSubmit}
-        className='dark:border-primaryGray fixed bottom-4 right-4 z-10 flex w-[250px] flex-col gap-4 rounded border-2 border-solid border-black bg-[#f7f9fc] p-4 dark:bg-[#535c72]'
+        className='fixed bottom-4 right-4 z-10 flex w-[250px] flex-col gap-4 rounded border-2 border-solid border-black bg-[#f7f9fc] p-4 dark:border-primaryGray dark:bg-[#535c72]'
       >
         <input
           autoFocus
           type='text'
           onChange={(e) => setName(e.target.value)}
           required
-          className='dark:border-primaryGray h-10 rounded border-[3px] border-black bg-[white] px-2 py-1 leading-none text-black focus:outline-none'
+          className='h-10 rounded border-[3px] border-black bg-[white] px-2 py-1 leading-none text-black focus:outline-none dark:border-primaryGray'
         />
         <div className='flex justify-center gap-4'>
           <Button type='submit'>Add</Button>

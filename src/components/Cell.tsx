@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { completeThing, Thing } from '../features/thing/thingSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import useClickOutside from '../hooks/useClickOutside'
@@ -13,7 +13,12 @@ const Cell = ({ currentThing, index }: CellProps) => {
   const { updateThingNote } = useThing()
   const { color } = useSelector((state: RootState) => state.user)
   const [showNote, setShowNote] = useState(false)
-  const ref = useRef(null)
+  const [notePosition, setNotePosition] = useState({
+    top: '20px',
+    left: '20px',
+    right: ''
+  })
+  const ref = useRef<HTMLDivElement>(null)
   useClickOutside(ref, () => setShowNote(false))
   const dispatch = useDispatch()
   const handleClickCell = () => {
@@ -25,6 +30,28 @@ const Cell = ({ currentThing, index }: CellProps) => {
     dispatch(completeThing(currentThing.id))
   }
   const timeComplete = formatDate(currentThing.completions[index]?.timestamp)
+
+  // Tính toán vị trí cho note
+  const calculateNotePosition = () => {
+    const cell = ref.current
+
+    const clientRef = cell?.getBoundingClientRect()
+
+    if (clientRef && window.innerWidth < clientRef.right) {
+      setNotePosition({
+        top: '20px',
+        right: '20px',
+        left: ''
+      })
+    }
+  }
+
+  useEffect(() => {
+    if (showNote) {
+      // setNotePosition(calculateNotePosition())
+      calculateNotePosition()
+    }
+  }, [showNote])
   return (
     <div className='relative h-[40px] w-[40px]'>
       <div
@@ -37,7 +64,8 @@ const Cell = ({ currentThing, index }: CellProps) => {
       {showNote && (
         <div
           ref={ref}
-          className='absolute left-[20px] top-[20px] z-[99] h-auto min-w-[150px] rounded border-2 border-solid border-black bg-white p-2'
+          className='absolute z-[99] h-auto min-w-[150px] rounded border-2 border-solid border-black bg-white p-2'
+          style={{ ...notePosition }}
         >
           <span className='dark:text-zinc-800'>{timeComplete}</span>
           <textarea
