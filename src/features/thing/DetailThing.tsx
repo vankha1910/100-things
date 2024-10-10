@@ -4,6 +4,8 @@ import Cell from '../../components/Cell'
 import { RootState } from '../../app/store'
 import { Thing as ThingInterface } from './thingSlice'
 import useThing from './useThing'
+import { FaPlus, FaMinus, FaTrash } from 'react-icons/fa6'
+import { IoMdReturnLeft } from 'react-icons/io'
 const A100 = Array.from(Array(100)).map((_, v) => v)
 
 const DetailThing = () => {
@@ -43,21 +45,33 @@ const Header = ({ currentThing }: { currentThing: ThingInterface }) => {
   return (
     <header className='flex flex-col gap-4'>
       <div className='flex justify-between'>
-        <Button onClick={handleBack}> ⬅ back </Button>
-        <Button onClick={handleRemove}> 🗑 Remove </Button>
+        <Button
+          onClick={handleBack}
+          className='flex min-w-20 items-center justify-center gap-2'
+        >
+          <IoMdReturnLeft /> Back{' '}
+        </Button>
+        <Button
+          className='flex min-w-20 items-center justify-center gap-2'
+          onClick={handleRemove}
+        >
+          <FaTrash /> Remove{' '}
+        </Button>
       </div>
       <div className='flex justify-between'>
         <Button
           disabled={currentThing.completions.length === 100}
           onClick={() => completeThing(currentThing.id)}
+          className='flex min-w-20 items-center justify-center gap-2'
         >
-          ➕ Do
+          <FaPlus /> Do
         </Button>
         <Button
           disabled={currentThing.completions.length === 0}
           onClick={() => undoCompleteThing(currentThing.id)}
+          className='flex min-w-20 items-center justify-center gap-2'
         >
-          ➖ Undo
+          <FaMinus /> Undo
         </Button>
       </div>
     </header>
