@@ -23,6 +23,7 @@ const NewUser = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+            aria-label='username'
           />
         </fieldset>
         <fieldset className='mb-8'>
@@ -31,6 +32,7 @@ const NewUser = () => {
             className='rounded-lg border-2 border-solid border-black bg-transparent p-2 outline-none dark:border-[#cbd5e1]'
             value={color}
             onChange={(e) => setColor(e.target.value)}
+            aria-label='color'
           >
             <option className='dark:text-black' value='#ffc0cb'>
               pink
